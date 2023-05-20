@@ -6,7 +6,7 @@ pipeline {
      }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('danny-dockerhub')
-    APP_NAME = "Daniel/amazon"
+    APP_NAME = "danny1dockerhub/amazon_app"
     }
     stages { 
         stage('SCM Checkout') {
