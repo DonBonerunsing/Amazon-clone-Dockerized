@@ -5,13 +5,13 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
      }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('karo-dockerhub')
-    APP_NAME = "ooghenekaro/amazon"
+    DOCKERHUB_CREDENTIALS = credentials('danny1dockerhub')
+    APP_NAME = "Daniel/amazon"
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-           git branch: 'main', url: 'https://github.com/ooghenekaro/Amazon-clone-Dockerized.git'
+           git branch: 'main', url: 'https://github.com/DonBonerunsing/Amazon-clone-Dockerized'
             }
         }
         // run sonarqube test
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Trivy Scan (Aqua)') {
             steps {
-                sh 'trivy image ooghenekaro/amazon:$BUILD_NUMBER'
+                sh 'trivy image $APP_NAME:$BUILD_NUMBER'
             }
        }
         stage('push image') {
